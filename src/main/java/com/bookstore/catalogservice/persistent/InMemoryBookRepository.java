@@ -33,7 +33,6 @@ public class InMemoryBookRepository implements BookRepository {
 	@Override
 	public Book save(Book book) {
 		books.put(book.isbn(), book);
-        System.out.println("Test");
 		return book;
 	}
 
