@@ -1,8 +1,9 @@
-package com.bookstore.catalogservice;
+package com.bookstore.catalogservice.web;
 
 import com.bookstore.catalogservice.domain.BookNotFoundException;
 import com.bookstore.catalogservice.domain.BookService;
 import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -12,9 +13,8 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
-@WebMvcTest(BookControllerTest.class)
-public class BookControllerTest {
+@WebMvcTest(BookController.class)
+class BookControllerMvcTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -22,15 +22,13 @@ public class BookControllerTest {
     @MockBean
     private BookService bookService;
 
-
     @Test
-    public void whenGiveBookNotExsistShouldReturn404() throws Exception {
-        String isbn = "1213";
+    void whenGetBookNotExistingThenShouldReturn404() throws Exception {
+        String isbn = "73737313940";
         given(bookService.viewBookDetails(isbn)).willThrow(BookNotFoundException.class);
-        mockMvc.perform(get("/books" + isbn)).andExpect(status().isNotFound());
-
-
+        mockMvc
+                .perform(get("/books/" + isbn))
+                .andExpect(status().isNotFound());
     }
-
 
 }
