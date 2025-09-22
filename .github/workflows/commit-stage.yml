@@ -59,9 +59,7 @@ jobs:
           cache: maven
       - name: Build container image
         run: |
-          chmod +x mvnw
-          ./mvnw -Dmaven.test.skip=true spring-boot:build-image \
-          -Dspring-boot.build-image.imageName=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
+          docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} .
 
       - name: OCI image vulnerability scanning
         uses: anchore/scan-action@v3
