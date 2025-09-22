@@ -30,9 +30,8 @@ spring:
     hikari:
       connection-timeout: 2000 #ms
       maximum-pool-size: 5
-  sql:
-    init:
-      mode: always
+  flyway:
+    baseline-on-migrate: true
 management:
   endpoints:
     web:
