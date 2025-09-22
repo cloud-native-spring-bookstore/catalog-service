@@ -57,6 +57,10 @@ jobs:
           distribution: temurin
           java-version: 17
           cache: maven
+      - name: Build jar
+        run: |
+          chmod +x mvnw
+          ./mvnw -Dmaven.test.skip=true package
       - name: Build container image
         run: |
           docker build -t ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} .
