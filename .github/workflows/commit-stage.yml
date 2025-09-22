@@ -23,7 +23,7 @@ jobs:
           java-version: 17
           cache: maven
 
-      - name: Build, unit tests and integration tests
+      - name: Build, unit tests and integration testss
         run: |
           chmod +x mvnw
           ./mvnw -Dmaven.test.skip=true package
