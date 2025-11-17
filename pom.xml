@@ -97,6 +97,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <version>1.15.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.opentelemetry.javaagent</groupId>
+            <artifactId>opentelemetry-javaagent</artifactId>
+            <version>1.32.0</version>
+            <scope>runtime</scope>
+        </dependency>
 
     </dependencies>
 
@@ -110,6 +122,13 @@
                         <builder>paketobuildpacks/builder:base</builder> <!-- Or your preferred builder -->
                     </image>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
 			</plugin>
         </plugins>
 

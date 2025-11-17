@@ -28,6 +28,7 @@ public class BookController {
 
     @GetMapping("{isbn}")
     public Book getByIsbn(@PathVariable String isbn) {
+        log.info("Get book by isbn {}", isbn);
         return bookService.viewBookDetails(isbn);
     }
 
