@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: catalog-service
-          image: catalog-service:0.0.1-SNAPSHOT-xxx123
+          image: catalog-service:4.0.0
           imagePullPolicy: Never
           lifecycle:
             preStop:
@@ -37,3 +37,9 @@ spec:
               value: jdbc:postgresql://polar-postgres/polardb_catalog
             - name: SPRING_PROFILES_ACTIVE
               value: testdata
+          volumeMounts:
+            - mountPath: /workspace/config
+              name: catalog-config-volume
+      volumes:
+        - name: catalog-config-volume
+          configMap: { name: catalog-config }
