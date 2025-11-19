@@ -3,7 +3,7 @@ on: push
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: https://github.com/orgs/cloud-native-spring-bookstore/catalog-service
+  IMAGE_NAME: github.com/orgs/cloud-native-spring-bookstore/catalog-service
   VERSION: ${{ github.sha }}
 
 jobs:
